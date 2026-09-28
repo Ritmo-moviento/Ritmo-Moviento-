@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ritmo y Movimiento | Grupo de Danza</title>
+<style>
+:root{--bg:#0b0810;--card:#17111d;--pink:#f36bb3;--violet:#9b6cff;--gold:#f4c86a;--text:#fff;--muted:#cfc5d7}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{text-decoration:none;color:inherit}.nav{position:fixed;top:0;width:100%;z-index:10;background:rgba(11,8,16,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+.navin{max-width:1100px;margin:auto;padding:16px 22px;display:flex;justify-content:space-between;align-items:center}.logo{font-weight:800;font-size:1.2rem}.logo span{color:var(--pink)}
+nav a{margin-left:20px;color:#eee;font-size:.92rem}nav a:hover{color:var(--pink)}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 20px 60px;position:relative;overflow:hidden;background:radial-gradient(circle at 20% 20%,#3a1745 0,transparent 35%),radial-gradient(circle at 80% 70%,#261d58 0,transparent 40%),var(--bg)}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(3px);opacity:.28}.hero:before{width:320px;height:320px;background:var(--pink);top:-100px;right:-70px}.hero:after{width:280px;height:280px;background:var(--violet);bottom:-90px;left:-80px}
+.hero>*{position:relative;z-index:1}.eyebrow{text-transform:uppercase;letter-spacing:4px;color:var(--gold);font-size:.78rem;margin-bottom:14px}.hero h1{font-size:clamp(3rem,9vw,7rem);line-height:.95;margin-bottom:20px;background:linear-gradient(90deg,#fff,#f36bb3,#9b6cff);-webkit-background-clip:text;color:transparent}.hero p{max-width:650px;margin:0 auto 30px;color:var(--muted);font-size:1.08rem}.btn{display:inline-block;padding:13px 24px;border-radius:999px;background:linear-gradient(90deg,var(--pink),var(--violet));font-weight:700;margin:5px;box-shadow:0 10px 30px rgba(243,107,179,.2)}.btn.alt{background:transparent;border:1px solid rgba(255,255,255,.25)}
+section{padding:85px 20px}.wrap{max-width:1100px;margin:auto}.title{text-align:center;margin-bottom:45px}.title small{color:var(--gold);letter-spacing:3px;text-transform:uppercase}.title h2{font-size:2.5rem;margin:8px 0}.title p{color:var(--muted);max-width:650px;margin:auto}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}.panel{background:linear-gradient(145deg,#191220,#100c15);border:1px solid rgba(255,255,255,.08);padding:30px;border-radius:24px}.panel h3{font-size:1.5rem;margin-bottom:12px}.panel p{color:var(--muted)}.quote{font-size:1.8rem;font-weight:700;background:linear-gradient(90deg,var(--pink),var(--violet));-webkit-background-clip:text;color:transparent}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:var(--card);padding:25px;border-radius:20px;border:1px solid rgba(255,255,255,.07);transition:.3s}.card:hover{transform:translateY(-6px);border-color:rgba(243,107,179,.45)}.icon{font-size:2rem;margin-bottom:12px}.card p{color:var(--muted);font-size:.94rem}
+.members .card{text-align:center}.avatar{width:90px;height:90px;margin:0 auto 15px;border-radius:50%;display:grid;place-items:center;font-size:2rem;background:linear-gradient(135deg,#f36bb3,#765cff)}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.photo{height:210px;border-radius:18px;display:flex;align-items:end;padding:18px;background:linear-gradient(145deg,#3c1947,#17102b);overflow:hidden;position:relative}.photo:nth-child(2){background:linear-gradient(145deg,#1f2852,#54204c)}.photo:nth-child(3){background:linear-gradient(145deg,#452044,#17142d)}.photo:nth-child(4){background:linear-gradient(145deg,#32205c,#10101e)}.photo span{font-weight:700;z-index:1}.events{display:grid;gap:15px}.event{display:flex;justify-content:space-between;align-items:center;gap:20px;background:var(--card);padding:22px 25px;border-radius:18px;border-left:4px solid var(--pink)}.event small{color:var(--gold)}.contact{text-align:center;background:linear-gradient(145deg,#21132a,#111020);border-radius:28px;padding:50px 25px}.contact p{color:var(--muted);margin:10px auto 25px;max-width:650px}.social{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.social a{padding:10px 18px;border:1px solid rgba(255,255,255,.15);border-radius:999px}
+footer{text-align:center;padding:30px 20px;color:#9e94a7;border-top:1px solid rgba(255,255,255,.08)}
+@media(max-width:800px){nav{display:none}.about,.grid{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}.event{align-items:flex-start;flex-direction:column}.hero h1{font-size:4rem}}
+@media(max-width:450px){.gallery{grid-template-columns:1fr}.photo{height:180px}}
+
+/* Pantalla de acceso y formulario de datos */
+#accessScreen{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at 20% 20%,#3a1745 0,transparent 35%),radial-gradient(circle at 80% 80%,#261d58 0,transparent 40%),#0b0810}
+.access-box{width:min(460px,100%);background:rgba(23,17,29,.94);border:1px solid rgba(255,255,255,.12);border-radius:28px;padding:38px 30px;box-shadow:0 25px 80px rgba(0,0,0,.45);text-align:center}
+.access-logo{font-size:1.55rem;font-weight:800;margin-bottom:28px}.access-logo span{color:var(--pink)}
+.access-box h2{font-size:2rem;margin-bottom:8px}.access-box p{color:var(--muted);margin-bottom:24px}
+.field{text-align:left;margin-bottom:16px}.field label{display:block;margin-bottom:7px;font-size:.9rem;color:#eee;font-weight:700}
+.field input,.field select{width:100%;padding:13px 15px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:#0e0a13;color:#fff;outline:none;font-size:.95rem}
+.field input:focus,.field select:focus{border-color:var(--pink);box-shadow:0 0 0 3px rgba(243,107,179,.1)}
+.error{color:#ff9dbf;font-size:.86rem;min-height:20px;margin-top:8px}
+#profileSection{display:none}
+.profile-form{max-width:850px;margin:0 auto;background:linear-gradient(145deg,#191220,#100c15);border:1px solid rgba(255,255,255,.08);padding:30px;border-radius:24px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.full{grid-column:1/-1}
+.photo-upload{text-align:center;padding:20px;border:1px dashed rgba(255,255,255,.2);border-radius:18px;margin-top:5px}
+.preview{width:130px;height:130px;border-radius:50%;object-fit:cover;display:none;margin:15px auto 0;border:3px solid var(--pink)}
+.save-msg{text-align:center;color:#bdf7d0;min-height:24px;margin-top:14px}
+.logout{text-align:center;margin-top:18px}
+@media(max-width:650px){.form-grid{grid-template-columns:1fr}.full{grid-column:auto}}
+
+
+.admin-btn{position:fixed;right:18px;bottom:18px;z-index:50;width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:#17111d;color:#fff;cursor:pointer;font-size:1.25rem;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.admin-panel{display:none;position:fixed;inset:0;z-index:1100;background:rgba(5,3,8,.92);backdrop-filter:blur(12px);overflow:auto;padding:30px 18px}
+.admin-box{max-width:900px;margin:20px auto;background:#17111d;border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:30px}
+.admin-top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:25px}
+.admin-close{background:none;border:0;color:#fff;font-size:1.8rem;cursor:pointer}
+.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.admin-field{margin-bottom:15px}.admin-field label{display:block;margin-bottom:7px;font-weight:700}
+.admin-field input,.admin-field textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:#0e0a13;color:#fff;font:inherit}
+.admin-field textarea{min-height:120px;resize:vertical}.admin-full{grid-column:1/-1}
+.admin-note{color:#aaa;font-size:.85rem;margin:15px 0}.admin-msg{color:#bdf7d0;min-height:24px;margin-top:10px}
+@media(max-width:650px){.admin-grid{grid-template-columns:1fr}.admin-full{grid-column:auto}}
+
+</style>
+</head>
+<body>
+
+<button class="admin-btn" id="adminOpen" title="Administración">⚙️</button>
+<div class="admin-panel" id="adminPanel">
+  <div class="admin-box">
+    <div class="admin-top">
+      <div><div class="eyebrow">Ritmo y Movimiento</div><h2>Panel de administración</h2></div>
+      <button class="admin-close" id="adminClose">×</button>
+    </div>
+    <p class="admin-note">Esta versión guarda los cambios en el navegador de este dispositivo. Para administrar la página desde cualquier dispositivo y publicar datos de forma segura se necesita un servidor y una base de datos.</p>
+    <form id="adminForm">
+      <div class="admin-grid">
+        <div class="admin-field admin-full"><label>Misión</label><textarea id="adminMision"></textarea></div>
+        <div class="admin-field admin-full"><label>Visión</label><textarea id="adminVision"></textarea></div>
+        <div class="admin-field"><label>Instagram</label><input id="adminInstagram" placeholder="@ritmoymovimiento"></div>
+        <div class="admin-field"><label>WhatsApp</label><input id="adminWhatsapp" placeholder="+593 ..."></div>
+        <div class="admin-field admin-full"><label>Próxima presentación</label><input id="adminEvento" placeholder="Nombre del evento — fecha — lugar"></div>
+      </div>
+      <button class="btn" type="submit">Guardar cambios</button>
+      <div class="admin-msg" id="adminMsg"></div>
+    </form>
+    <div style="margin-top:25px"><button class="btn alt" id="adminLogout" type="button">Cerrar administración</button></div>
+  </div>
+</div>
+
+
+<div id="accessScreen">
+  <div class="access-box">
+    <div class="access-logo">Ritmo <span>&</span> Movimiento</div>
+    <h2>Bienvenido/a 💃</h2>
+    <p>Ingresa tu número de cédula para acceder a la página.</p>
+    <form id="accessForm">
+      <div class="field">
+        <label for="loginCedula">Número de cédula</label>
+        <input id="loginCedula" name="loginCedula" type="text" inputmode="numeric" maxlength="10" placeholder="Ej. 0102030405" required>
+      </div>
+      <button class="btn" type="submit">Ingresar</button>
+      <div class="error" id="loginError"></div>
+    </form>
+  </div>
+</div>
+
+<header class="nav"><div class="navin"><a class="logo" href="#inicio">Ritmo <span>&</span> Movimiento</a><nav><a href="#nosotros">Nosotros</a><a href="#mision-vision">Misión y Visión</a><a href="#estilos">Estilos</a><a href="#integrantes">Integrantes</a><a href="#galeria">Galería</a><a href="#eventos">Eventos</a><a href="#contacto">Contacto</a></nav></div></header>
+
+
+<section id="profileSection">
+  <div class="wrap">
+    <div class="title">
+      <small>Registro de integrante</small>
+      <h2>Tus datos</h2>
+      <p>Completa la información para continuar.</p>
+    </div>
+    <div class="profile-form">
+      <form id="profileForm">
+        <div class="form-grid">
+          <div class="field"><label for="nombre">Nombre</label><input id="nombre" required></div>
+          <div class="field"><label for="apellido">Apellido</label><input id="apellido" required></div>
+          <div class="field"><label for="cedula">Cédula</label><input id="cedula" type="text" inputmode="numeric" maxlength="10" required></div>
+          <div class="field"><label for="direccion">Dirección</label><input id="direccion" required></div>
+          <div class="field"><label for="facultad">Facultad</label><input id="facultad" required></div>
+          <div class="field"><label for="carrera">Carrera</label><input id="carrera" required></div>
+          <div class="field"><label for="ciclo">Ciclo</label><input id="ciclo" required></div>
+          <div class="field full photo-upload">
+            <label for="foto">Foto personal</label>
+            <input id="foto" type="file" accept="image/*" required>
+            <img id="preview" class="preview" alt="Vista previa de la foto personal">
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:20px">
+          <button class="btn" type="submit">Guardar mis datos</button>
+        </div>
+        <div class="save-msg" id="saveMsg"></div>
+      </form>
+      <div class="logout"><button class="btn alt" id="logoutBtn" type="button">Cerrar sesión</button></div>
+    </div>
+  </div>
+</section>
+
+<main>
+<section class="hero" id="inicio">
+<div><div class="eyebrow">Grupo de danza • Pasión • Arte • Movimiento</div>
+<h1>Ritmo y<br>Movimiento</h1>
+<p>Donde cada paso cuenta una historia. Un espacio para expresar, crear y compartir la pasión por la danza.</p>
+<a class="btn" href="#nosotros">Conócenos</a><a class="btn alt" href="#contacto">Únete al grupo</a></div>
+</section>
+
+<section id="nosotros"><div class="wrap"><div class="title"><small>Quiénes somos</small><h2>Más que una coreografía</h2><p>Somos un grupo que convierte la música en expresión y el movimiento en una forma de conectar.</p></div>
+<div class="about"><div class="panel"><h3>Nuestra esencia</h3><p>En Ritmo y Movimiento creemos que bailar es mucho más que aprender pasos. Es disciplina, creatividad, confianza, compañerismo y libertad para contar historias con el cuerpo.</p><br><p>Trabajamos juntos para crecer en cada ensayo y disfrutar cada presentación.</p></div><div class="panel"><div class="quote">“Bailamos porque lo que sentimos también puede expresarse en movimiento.”</div></div></div></div></section>
+
+
+<section id="mision-vision">
+  <div class="wrap">
+    <div class="title"><small>Nuestro propósito</small><h2>Misión y Visión</h2></div>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🎯</div>
+        <h3>Misión</h3>
+        <p>Promover la danza como una forma de expresión artística, desarrollo personal y trabajo en equipo, brindando un espacio donde cada integrante pueda fortalecer sus habilidades, creatividad, disciplina y pasión por el movimiento.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🌟</div>
+        <h3>Visión</h3>
+        <p>Ser un grupo de danza reconocido por su compromiso, creatividad y calidad artística, creciendo juntos y llevando nuestras presentaciones a diferentes espacios para inspirar a más personas a descubrir el poder de la danza.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="estilos"><div class="wrap"><div class="title"><small>Lo que hacemos</small><h2>Nuestros estilos</h2><p>Exploramos diferentes formas de movimiento para crear experiencias únicas.</p></div>
+<div class="grid"><div class="card"><div class="icon">🔥</div><h3>Danza urbana</h3><p>Energía, actitud y creatividad a través de coreografías dinámicas.</p></div><div class="card"><div class="icon">✨</div><h3>Danza moderna</h3><p>Expresión corporal, musicalidad y libertad de movimiento.</p></div><div class="card"><div class="icon">🌙</div><h3>Contemporánea</h3><p>Una mezcla de técnica, emoción y narrativa corporal.</p></div><div class="card"><div class="icon">🎭</div><h3>Coreografías</h3><p>Montajes grupales preparados para presentaciones y eventos.</p></div><div class="card"><div class="icon">🥁</div><h3>Folclore</h3><p>Movimiento y tradición para celebrar nuestras raíces.</p></div><div class="card"><div class="icon">💫</div><h3>Fusión</h3><p>Combinamos estilos para crear propuestas originales.</p></div></div></div></section>
+
+<section id="integrantes" class="members"><div class="wrap"><div class="title"><small>Nuestro equipo</small><h2>Integrantes</h2><p>Un grupo, muchas personalidades y una misma pasión.</p></div>
+<div class="grid"><div class="card"><div class="avatar">💃</div><h3>Integrante 1</h3><p>Coreógrafa / Bailarina</p></div><div class="card"><div class="avatar">🕺</div><h3>Integrante 2</h3><p>Bailarín</p></div><div class="card"><div class="avatar">💃</div><h3>Integrante 3</h3><p>Bailarina</p></div></div></div></section>
+
+<section id="galeria"><div class="wrap"><div class="title"><small>Momentos</small><h2>Galería</h2><p>Espacio reservado para las mejores fotos y videos del grupo.</p></div>
+<div class="gallery"><div class="photo"><span>Ensayos</span></div><div class="photo"><span>Presentaciones</span></div><div class="photo"><span>Detrás de escena</span></div><div class="photo"><span>Momentos especiales</span></div></div></div></section>
+
+<section id="eventos"><div class="wrap"><div class="title"><small>Agenda</small><h2>Próximas presentaciones</h2><p>Agrega aquí las fechas importantes de Ritmo y Movimiento.</p></div>
+<div class="events"><div class="event"><div><small>FECHA POR CONFIRMAR</small><h3>Próxima presentación</h3><p style="color:#aaa">Lugar por confirmar</p></div><a class="btn" href="#contacto">Más información</a></div><div class="event"><div><small>PRÓXIMAMENTE</small><h3>Nuevos eventos</h3><p style="color:#aaa">Síguenos para conocer las novedades.</p></div></div></div></div></section>
+
+<section id="contacto"><div class="wrap"><div class="contact"><div class="title" style="margin-bottom:15px"><small>Conecta con nosotros</small><h2>¿Quieres formar parte?</h2></div><p>Escríbenos y descubre cómo puedes unirte a Ritmo y Movimiento, participar en nuestros ensayos o acompañarnos en nuestras presentaciones.</p><div class="social"><a href="#">📸 Instagram</a><a href="#">📱 WhatsApp</a><a href="#">🎵 TikTok</a></div></div></div></section>
+</main>
+<footer>© 2026 Ritmo y Movimiento · Hecho con pasión por la danza 💜</footer>
+
+<script>
+const accessScreen = document.getElementById('accessScreen');
+const profileSection = document.getElementById('profileSection');
+const loginForm = document.getElementById('accessForm');
+const loginCedula = document.getElementById('loginCedula');
+const loginError = document.getElementById('loginError');
+const profileForm = document.getElementById('profileForm');
+const photoInput = document.getElementById('foto');
+const preview = document.getElementById('preview');
+const saveMsg = document.getElementById('saveMsg');
+
+function showProfile(){
+  accessScreen.style.display='none';
+  profileSection.style.display='block';
+  document.body.style.overflow='auto';
+  document.getElementById('cedula').value = loginCedula.value.trim();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+loginForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  const cedula = loginCedula.value.trim();
+  if(!/^\d{10}$/.test(cedula)){
+    loginError.textContent='Ingresa una cédula válida de 10 dígitos.';
+    return;
+  }
+  loginError.textContent='';
+  localStorage.setItem('rm_cedula',cedula);
+  showProfile();
+});
+photoInput.addEventListener('change',function(){
+  const file=this.files[0];
+  if(file){
+    preview.src=URL.createObjectURL(file);
+    preview.style.display='block';
+  }
+});
+profileForm.addEventListener('submit',function(e){
+  e.preventDefault();
+  const data={
+    nombre:document.getElementById('nombre').value,
+    apellido:document.getElementById('apellido').value,
+    cedula:document.getElementById('cedula').value,
+    direccion:document.getElementById('direccion').value,
+    facultad:document.getElementById('facultad').value,
+    carrera:document.getElementById('carrera').value,
+    ciclo:document.getElementById('ciclo').value
+  };
+  localStorage.setItem('rm_profile',JSON.stringify(data));
+  saveMsg.textContent='✓ Datos guardados en este dispositivo.';
+});
+document.getElementById('logoutBtn').addEventListener('click',function(){
+  localStorage.removeItem('rm_cedula');
+  accessScreen.style.display='flex';
+  profileSection.style.display='none';
+  loginCedula.value='';
+  loginError.textContent='';
+  window.scrollTo({top:0});
+});
+const saved = localStorage.getItem('rm_profile');
+if(saved){
+  try{
+    const data=JSON.parse(saved);
+    for(const key of ['nombre','apellido','cedula','direccion','facultad','carrera','ciclo']){
+      if(document.getElementById(key)) document.getElementById(key).value=data[key]||'';
+    }
+  }catch(e){}
+}
+</script>
+
+
+<script>
+(function(){
+const openBtn=document.getElementById('adminOpen');
+const panel=document.getElementById('adminPanel');
+const closeBtn=document.getElementById('adminClose');
+const loginPanel=document.getElementById('adminLoginPanel');
+const loginForm=document.getElementById('adminLoginForm');
+const password=document.getElementById('adminPassword');
+const loginError=document.getElementById('adminLoginError');
+const form=document.getElementById('adminForm');
+const msg=document.getElementById('adminMsg');
+
+const DEFAULT={
+ mision:"Promover la danza como una forma de expresión artística, desarrollo personal y trabajo en equipo, brindando un espacio donde cada integrante pueda fortalecer sus habilidades, creatividad, disciplina y pasión por el movimiento.",
+ vision:"Ser un grupo de danza reconocido por su compromiso, creatividad y calidad artística, creciendo juntos y llevando nuestras presentaciones a diferentes espacios para inspirar a más personas a descubrir el poder de la danza.",
+ instagram:"@ritmoymovimiento", whatsapp:"+593", evento:"Próxima presentación — Fecha por confirmar — Lugar por confirmar"
+};
+function loadAdmin(){
+ const d=JSON.parse(localStorage.getItem('rm_admin_content')||'null')||DEFAULT;
+ document.getElementById('adminMision').value=d.mision;
+ document.getElementById('adminVision').value=d.vision;
+ document.getElementById('adminInstagram').value=d.instagram;
+ document.getElementById('adminWhatsapp').value=d.whatsapp;
+ document.getElementById('adminEvento').value=d.evento;
+}
+openBtn.onclick=()=>{loginPanel.style.display='block';password.focus()};
+closeBtn.onclick=()=>panel.style.display='none';
+document.getElementById('adminLogout').onclick=()=>panel.style.display='none';
+loginForm.onsubmit=(e)=>{
+ e.preventDefault();
+ /* Contraseña inicial: Ritmo2026!
+    Cámbiala antes de publicar una versión con servidor. */
+ if(password.value==='Ritmo2026!'){
+   loginPanel.style.display='none';panel.style.display='block';loadAdmin();loginError.textContent='';
+ }else loginError.textContent='Contraseña incorrecta.';
+};
+form.onsubmit=(e)=>{
+ e.preventDefault();
+ const d={
+  mision:document.getElementById('adminMision').value,
+  vision:document.getElementById('adminVision').value,
+  instagram:document.getElementById('adminInstagram').value,
+  whatsapp:document.getElementById('adminWhatsapp').value,
+  evento:document.getElementById('adminEvento').value
+ };
+ localStorage.setItem('rm_admin_content',JSON.stringify(d));
+ const m=document.querySelector('#mision-vision .grid');
+ if(m){
+   m.children[0].querySelector('p').textContent=d.mision;
+   m.children[1].querySelector('p').textContent=d.vision;
+ }
+ const ev=document.querySelector('#eventos .event h3');
+ const ep=document.querySelector('#eventos .event p');
+ if(ev){const parts=d.evento.split('—');ev.textContent=(parts[0]||d.evento).trim();if(ep)ep.textContent=(parts.slice(1).join('—')||'').trim()}
+ msg.textContent='✓ Cambios guardados en este dispositivo.';
+};
+})();
+</script>
+
+</body>
+</html>
